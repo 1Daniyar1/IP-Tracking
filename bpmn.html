@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Great Documentation &middot; My Corp</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bpmn-js@10.1.0/dist/bpmn-viewer.production.min.js"></script> <!--link to the bpmn library --> 
+</head>
+<body>
+  <main>
+    <h1>Great Documentation &middot; My Corp</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Sit amet consectetur
+      adipiscing elit duis tristique sollicitudin nibh. Duis ultricies lacus
+      sed turpis tincidunt id aliquet risus feugiat. Diam sollicitudin tempor
+      id eu nisl. Porttitor leo a diam sollicitudin tempor. Mattis enim ut
+      tellus elementum. Commodo viverra maecenas accumsan lacus. Fusce id
+      velit ut tortor pretium viverra suspendisse potenti nullam. Massa tempor
+      nec feugiat nisl pretium fusce.
+    </p>
+
+    <div id="bpmn-diagram" style="width: 100%; height: 400px;"></div>  <!-- Div element that will store embed bpmn diagram --> 
+
+    <p>
+      Tristique sollicitudin nibh sit amet. Tincidunt ornare massa eget
+      egestas purus viverra accumsan. Dui ut ornare lectus sit. Elit at
+      imperdiet dui accumsan sit. Ornare arcu odio ut sem nulla pharetra. Quis
+      viverra nibh cras pulvinar mattis. Enim praesent elementum facilisis leo
+      vel. Sed risus ultricies tristique nulla. Morbi quis commodo odio aenean
+      sed. Cursus metus aliquam eleifend mi in nulla posuere sollicitudin
+      aliquam.
+    </p>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {  // Event listener for when the DOM content is fully loaded 
+      var bpmnDiagramContainer = document.getElementById('bpmn-diagram'); // Get a reference of the bpmn diagram div
+      var bpmnViewer = new BpmnJS({ // Create a new instance of the bpmn-js viewer
+        container: bpmnDiagramContainer
+      });
+
+      fetch('https://cdn.statically.io/gh/bpmn-io/bpmn-js-examples/main/overlays/resources/qr-code.bpmn') // Fetch the BPMN diagram XML content from the URL
+        .then(response => response.text()) // Converting response to text
+        .then(xml => {
+          bpmnViewer.importXML(xml); // Importing bpmn diagram XML into the bpmn-js viewer
+        })
+        .catch(error => { 
+          console.error('Error occured', error); 
+        });
+    });
+  </script>
+</body>
+</html>
