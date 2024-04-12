@@ -67,7 +67,7 @@ button:hover{
     height: 200px;
     background-color: #fff;
     position: relative;
-    top: -90px;
+    top: -30%;
     left: 50%;
     margin: 0;
     transform: translate(-50%, -50%);
